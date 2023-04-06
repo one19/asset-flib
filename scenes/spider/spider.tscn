@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_tv0j1"]
 radius = 8.0
 
-[node name="Spider" type="CharacterBody2D"]
+[node name="Spider" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 0
 script = ExtResource("1_fs1b4")
 

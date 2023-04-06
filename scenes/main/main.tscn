@@ -19,3 +19,6 @@ layer_0/tile_data = PackedInt32Array(65536, 0, 4, 65537, 0, 4, 65538, 0, 4, 6553
 
 [node name="Spider" parent="." instance=ExtResource("4_ogtpx")]
 position = Vector2(334, 194)
+
+[node name="Spider2" parent="." instance=ExtResource("4_ogtpx")]
+position = Vector2(75, 317)
