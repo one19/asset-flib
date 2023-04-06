@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpngurnckcvyk"]
+[gd_scene load_steps=5 format=3 uid="uid://bxqwge87bx7fp"]
 
-[ext_resource type="Script" path="res://scenes/spider/spider.gd" id="1_fs1b4"]
-[ext_resource type="Texture2D" uid="uid://etbsa837cb6a" path="res://scenes/spider/spider.png" id="2_ykf7y"]
+[ext_resource type="Script" path="res://scenes/enemies/spider/spider.gd" id="1_ernpn"]
+[ext_resource type="Texture2D" uid="uid://etbsa837cb6a" path="res://scenes/enemies/spider/spider.png" id="2_omdsj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rt372"]
 radius = 12.0
@@ -11,7 +11,7 @@ radius = 8.0
 
 [node name="Spider" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 0
-script = ExtResource("1_fs1b4")
+script = ExtResource("1_ernpn")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
@@ -22,7 +22,7 @@ position = Vector2(2.08165e-12, -8.5)
 shape = SubResource("CircleShape2D_rt372")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_ykf7y")
+texture = ExtResource("2_omdsj")
 offset = Vector2(2.08165e-12, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
