@@ -2,11 +2,12 @@ extends Node
 
 @export var spiderScene: PackedScene
 
-const HALF_SCREEN_WIDTH = 320
-const SPAWN_RADIUS = HALF_SCREEN_WIDTH + 40
+var spawnRadius = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# set the spawn radius to juuuuust over the diagonal of the viewport
+	spawnRadius = Vector2(get_tree().get_root().get_visible_rect().size).length() / 2 + 15
 	$Timer.timeout.connect(spawnEnemy)
 
 func spawnEnemy():
@@ -17,7 +18,7 @@ func spawnEnemy():
 
 	# Just FYI TAU is 2*pi
 	var randomDirection = Vector2.RIGHT.rotated(randf_range(0, TAU))
-	var spawnPosition = randomDirection * SPAWN_RADIUS + player.global_position
+	var spawnPosition = randomDirection * spawnRadius + player.global_position
 
 	# create the enemy using its instantiate method
 	var enemy = spiderScene.instantiate() as Node2D
