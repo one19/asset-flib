@@ -23,13 +23,22 @@ func onTimerTimeout():
 
 	if enemies.size() == 0:
 		return
-		
+
 	enemies.sort_custom(func (a: Node2D, b: Node2D):
 		var aDistance = a.global_position.distance_squared_to(player.global_position)
 		var bDistance = b.global_position.distance_squared_to(player.global_position)
 		return aDistance < bDistance
 	)
 
+	# spawn the sword as a child of the player
 	var swordInstance = swordAbility.instantiate() as Node2D
 	player.get_parent().add_child(swordInstance)
-	swordInstance.global_position = enemies[0].global_position
+
+	# set the sword location somewhere randomly rotated around the nearest enemy
+	# and offset it by 4 pixels so it should generally hit them
+	var randomDistance = Vector2.RIGHT.rotated(randf_range(0, TAU) * 5)
+	swordInstance.global_position = enemies[0].global_position + randomDistance
+	
+	# align the sword towards the enemy
+	var enemyDirection = enemies[0].global_position - swordInstance.global_position
+	swordInstance.rotation = enemyDirection.angle()
