@@ -1,6 +1,6 @@
 extends Camera2D
 
-const SMOOTHING_VALUE = 10
+const SMOOTHING_VALUE = 20
 
 # we could also try not mutating and see if there's a performance hit.
 var target_position = Vector2.ZERO

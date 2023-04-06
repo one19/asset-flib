@@ -14,7 +14,8 @@ func _process(_delta):
 	velocity = direction * MAX_SPEED
 	move_and_slide()
 	
-	rotation = direction.angle()
+	# can rotate to face the player, but it gets janky up close
+#	rotation = direction.angle()
 
 
 func getDirectionToPlayer():
