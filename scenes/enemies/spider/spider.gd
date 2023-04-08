@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const MAX_SPEED = 75
 
-@onready var healthComponent: HealthComponent = $HealthComponent
+@onready var healthComponent: Health = $HealthComponent
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

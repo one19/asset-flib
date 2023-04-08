@@ -1,7 +1,7 @@
 extends Node
 
 @export_range(0, 1) var dropPercent: float = 0.9
-@export var healthComponent: HealthComponent
+@export var healthComponent: Health
 @export var vialScene: PackedScene
 
 func _ready():

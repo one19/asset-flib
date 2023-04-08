@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bxqwge87bx7fp"]
+[gd_scene load_steps=8 format=3 uid="uid://dqi7xhgb8gmb2"]
 
 [ext_resource type="Script" path="res://scenes/enemies/spider/spider.gd" id="1_ernpn"]
-[ext_resource type="PackedScene" uid="uid://ccnyy1i17j1l3" path="res://scenes/components/health_component.tscn" id="2_7o11o"]
+[ext_resource type="PackedScene" uid="uid://dkecm1s4gfhq7" path="res://scenes/components/health.tscn" id="2_7o11o"]
 [ext_resource type="Texture2D" uid="uid://etbsa837cb6a" path="res://scenes/enemies/spider/spider.png" id="2_omdsj"]
-[ext_resource type="PackedScene" uid="uid://b2gfdvhb4m0o0" path="res://scenes/components/vial_drop_component.tscn" id="3_4r4ur"]
+[ext_resource type="PackedScene" path="res://scenes/components/vial_drop.tscn" id="3_4r4ur"]
 [ext_resource type="PackedScene" uid="uid://c5jisfx630adr" path="res://scenes/components/hurtbox.tscn" id="4_cmbp4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_typcc"]
