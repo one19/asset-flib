@@ -2,7 +2,7 @@ extends Node
 
 @export var swordAbility: PackedScene
 
-@export var maxRange: float
+@export var maxRange: float = 150
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
