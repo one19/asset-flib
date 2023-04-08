@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c8ajwtiv8x8h1" path="res://scenes/gameObjects/smallEXP/smallEXP.png" id="1_g3yxe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jwb2u"]
-radius = 16.5
+radius = 8.0
 
 [node name="smallEXP" type="Node2D"]
 script = ExtResource("1_0mju1")
@@ -14,6 +14,7 @@ collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(0.75, 1)
 shape = SubResource("CircleShape2D_jwb2u")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
