@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://scenes/autoload/game_events.gd" id="1_c5m1k"]
 
-[node name="GameEvents" type="Node2D"]
+[node name="GameEvents" type="Node"]
 script = ExtResource("1_c5m1k")
