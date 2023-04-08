@@ -4,12 +4,6 @@ const MAX_SPEED = 75
 
 @onready var healthComponent: HealthComponent = $HealthComponent
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	# get_node("area2D")
-	$Area2D.area_entered.connect(onAreaEntered)
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	var direction = getDirectionToPlayer()
@@ -25,7 +19,3 @@ func getDirectionToPlayer():
 	if playerNode != null:
 		return (playerNode.global_position - global_position).normalized()
 	return Vector2.ZERO
-
-
-func onAreaEntered(_swordArea):
-	healthComponent.takeDamage(100)
