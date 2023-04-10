@@ -1,6 +1,8 @@
 extends Node
 
+# create the signals we emit here
 signal expUpdated(currentExperience: float, targetExperience: float)
+signal levelUp(newLevel: int)
 
 const TARGET_GROWTH_MULT = 1.1
 
@@ -21,3 +23,4 @@ func incrementExperience(addedExperience: float):
 		targetExperience *= TARGET_GROWTH_MULT
 		currentExperience = 0
 		expUpdated.emit(currentExperience, targetExperience)
+		levelUp.emit(currentLevel)
