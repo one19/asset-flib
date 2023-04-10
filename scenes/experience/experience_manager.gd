@@ -7,7 +7,7 @@ signal levelUp(newLevel: int)
 const TARGET_GROWTH_MULT = 1.1
 
 var currentExperience = 0
-var targetExperience = 5
+var targetExperience = 1
 var currentLevel = 1
 
 func _ready():
