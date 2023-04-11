@@ -22,10 +22,10 @@ expManager = NodePath("../ExperienceManager")
 
 [node name="ExperienceManager" parent="." instance=ExtResource("3_pe8bv")]
 
+[node name="EnemyManager" parent="." instance=ExtResource("1_tas1d")]
+
 [node name="UpgradeManager" parent="." node_paths=PackedStringArray("expManager") instance=ExtResource("5_8kwjn")]
 expManager = NodePath("../ExperienceManager")
-
-[node name="EnemyManager" parent="." instance=ExtResource("1_tas1d")]
 
 [node name="GameCamera" parent="." instance=ExtResource("1_dcrok")]
 

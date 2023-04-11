@@ -26,6 +26,9 @@ func onLevelUp(_currentLevel: int):
 	# and sucks at it, what a pain. time for more casting :grimacing:
 	upgradeScreen.setAbilityUpgrades([chosenUpgrade] as Array[AbilityUpgrade])
 
+#	upgradeScreen.upgradeSelected.connect(onUpgradeSelected)
+	upgradeScreen.upgradeSelected.connect(applyUpgrade)
+
 
 func applyUpgrade(upgrade: AbilityUpgrade):
 	var hasUpgrade = currentUpgrades.has(upgrade.id)
@@ -37,4 +40,8 @@ func applyUpgrade(upgrade: AbilityUpgrade):
 	else:
 		currentUpgrades[upgrade.id].quantity += 1
 
-#	print(currentUpgrades)
+	print(currentUpgrades)
+
+
+#func onUpgradeSelected(upgrade: AbilityUpgrade):
+#	applyUpgrade(upgrade)
