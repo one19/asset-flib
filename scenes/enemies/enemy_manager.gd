@@ -22,7 +22,6 @@ func spawnEnemy():
 
 	# create the enemy using its instantiate method
 	var enemy = spiderScene.instantiate() as Node2D
-	# pop it onto the parent node (main)
 	
 	var entitiesLayer = get_tree().get_first_node_in_group("entitiesLayer")
 	entitiesLayer.add_child(enemy)

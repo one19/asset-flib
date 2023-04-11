@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=8 format=3 uid="uid://b16707uc5ujrk"]
 
 [ext_resource type="Script" path="res://scenes/enemies/spider/spider.gd" id="1_ernpn"]
 [ext_resource type="PackedScene" uid="uid://dkecm1s4gfhq7" path="res://scenes/components/health.tscn" id="2_7o11o"]
