@@ -4,14 +4,17 @@ extends Node
 
 @export var maxRange: float = 150
 var damage = 50
+var baseSwingDelay
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# get_node("Timer")
-	$Timer.timeout.connect(onTimerTimeout)
+	baseSwingDelay = $Timer.wait_time
+	$Timer.timeout.connect(swingTheSword)
+	GameEvents.abilityUpgraded.connect(onAbilityUpgraded)
 
 
-func onTimerTimeout():
+func swingTheSword():
 	var player = get_tree().get_first_node_in_group("player") as Node2D
 	var enemies = get_tree().get_nodes_in_group("enemies")
 	
@@ -44,3 +47,15 @@ func onTimerTimeout():
 	# align the sword towards the enemy
 	var enemyDirection = enemies[0].global_position - swordInstance.global_position
 	swordInstance.rotation = enemyDirection.angle()
+
+
+func onAbilityUpgraded(ability: AbilityUpgrade, currentUpgrades: Dictionary):
+	if ability.id != "sword_spd":
+		return
+
+	var percentReduction = currentUpgrades.sword_spd.quantity * 0.1
+	$Timer.wait_time = max(baseSwingDelay * (1 - percentReduction), 0.05)
+	$Timer.start()
+	
+	# currently wait_time will drop to .15 and then go negative, stopping at 0.05s
+	print($Timer.wait_time)
