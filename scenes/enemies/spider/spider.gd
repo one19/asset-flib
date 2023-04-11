@@ -5,10 +5,6 @@ const MAX_SPEED = 75
 @onready var healthComponent: Health = $HealthComponent
 
 
-func _ready():
-	global_position = Vector2.INF
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	var direction = getDirectionToPlayer()
