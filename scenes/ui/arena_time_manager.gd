@@ -1,6 +1,6 @@
 extends Node
 
-@export var victoryScreen: PackedScene
+@export var endScreen: PackedScene
 
 # no longer do we need to do a lookup in the function call
 # it's bound to a var
@@ -16,5 +16,5 @@ func getTimeElapsed():
 
 
 func outOfTime():
-	var victoryScreenScene = victoryScreen.instantiate()
-	add_child(victoryScreenScene)
+	var endScreenScene = endScreen.instantiate()
+	add_child(endScreenScene)
