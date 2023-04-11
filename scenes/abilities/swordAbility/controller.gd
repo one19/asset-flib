@@ -36,7 +36,9 @@ func swingTheSword():
 
 	# spawn the sword as a child of the player
 	var swordInstance = swordAbility.instantiate() as SwordAbility
-	player.get_parent().add_child(swordInstance)
+	var foregroundLayer = get_tree().get_first_node_in_group("foregroundLayer")
+#	player.get_parent().add_child(swordInstance)
+	foregroundLayer.add_child(swordInstance)
 	swordInstance.hitboxComponent.damage = damage
 
 	# set the sword location somewhere randomly rotated around the nearest enemy
