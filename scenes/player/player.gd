@@ -32,17 +32,14 @@ func getMovementVector():
 
 
 func onEnemyEntered(enemyArea: Node2D):
-	print(enemyArea)
 	numberOfCollidingBodies += 1
 	handleContinuousDamage()
 
 func onEnemyExited(enemyArea: Node2D):
-	print('exited', enemyArea)
 	numberOfCollidingBodies -= 1
 
 
 func handleContinuousDamage():
-	print(numberOfCollidingBodies, !damageTimer.is_stopped())
 	if numberOfCollidingBodies == 0 || !damageTimer.is_stopped():
 		return
 

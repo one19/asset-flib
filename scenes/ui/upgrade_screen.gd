@@ -12,7 +12,6 @@ func _ready():
 
 
 func setAbilityUpgrades(upgrades: Array[AbilityUpgrade]):
-#	print(cardContainer)
 	for upgrade in upgrades:
 		var cardInstance = upgradeCardScene.instantiate() as UpgradeCard
 		cardContainer.add_child(cardInstance)

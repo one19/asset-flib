@@ -4,9 +4,7 @@ extends Node
 @export var expManager: Node
 @export var upgradeScreenScene: PackedScene
 
-var currentUpgrades = {
-#	"dookie": "floober"
-}
+var currentUpgrades = {}
 
 
 func _ready():
@@ -14,7 +12,6 @@ func _ready():
 
 
 func onLevelUp(_currentLevel: int):
-	#	print(currentUpgrades.dookie)
 	var chosenUpgrade = upgradePool.pick_random()
 
 	if chosenUpgrade == null:
@@ -40,4 +37,3 @@ func applyUpgrade(upgrade: AbilityUpgrade):
 		currentUpgrades[upgrade.id].quantity += 1
 
 	GameEvents.emitAbilityUpgraded(upgrade, currentUpgrades)
-#	print(currentUpgrades)

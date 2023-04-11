@@ -60,4 +60,4 @@ func onAbilityUpgraded(ability: AbilityUpgrade, currentUpgrades: Dictionary):
 	$Timer.start()
 	
 	# currently wait_time will drop to .15 and then go negative, stopping at 0.05s
-	print($Timer.wait_time)
+#	print($Timer.wait_time)
