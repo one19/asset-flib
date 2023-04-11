@@ -4,6 +4,8 @@ const MAX_SPEED = 200
 const ACCELERATION_SMOOTHING = 15
 
 @onready var damageTimer = $DamageIntervalTimer
+@onready var healthBar = $HealthBar
+@onready var health = $Health
 
 var numberOfCollidingBodies = 0
 
@@ -12,9 +14,12 @@ func _ready():
 	$CollisionArea2D.body_entered.connect(onEnemyEntered)
 	$CollisionArea2D.body_exited.connect(onEnemyExited)
 	damageTimer.timeout.connect(handleContinuousDamage)
+	health.healthChanged.connect(onHealthChanged)
+	healthBar.value = health.getPercent() # this is meh, but children are already ready
+# if they weren't we couldn't instantiate the parent, so there'd be nothing to listen to
+# data only flows after everything is made. This is an acceptable solution for dynamic health
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var movementVector = getMovementVector()
 	var direction = movementVector.normalized()
@@ -31,6 +36,15 @@ func getMovementVector():
 	return Vector2(xDirection, yDirection)
 
 
+func handleContinuousDamage():
+	if numberOfCollidingBodies == 0 || !damageTimer.is_stopped():
+		return
+
+	health.takeDamage(1)
+	damageTimer.start()
+	print("health", health.currentHealth)
+
+
 func onEnemyEntered(enemyArea: Node2D):
 	numberOfCollidingBodies += 1
 	handleContinuousDamage()
@@ -38,11 +52,5 @@ func onEnemyEntered(enemyArea: Node2D):
 func onEnemyExited(enemyArea: Node2D):
 	numberOfCollidingBodies -= 1
 
-
-func handleContinuousDamage():
-	if numberOfCollidingBodies == 0 || !damageTimer.is_stopped():
-		return
-
-	$Health.takeDamage(1)
-	damageTimer.start()
-	print("health", $Health.currentHealth)
+func onHealthChanged(healthPercent: float):
+	healthBar.value = healthPercent
