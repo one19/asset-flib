@@ -45,11 +45,11 @@ func handleContinuousDamage():
 	print("health", health.currentHealth)
 
 
-func onEnemyEntered(enemyArea: Node2D):
+func onEnemyEntered(_enemyArea: Node2D):
 	numberOfCollidingBodies += 1
 	handleContinuousDamage()
 
-func onEnemyExited(enemyArea: Node2D):
+func onEnemyExited(_enemyArea: Node2D):
 	numberOfCollidingBodies -= 1
 
 func onHealthChanged(healthPercent: float):
