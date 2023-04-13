@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://brfspx5gt5bv7"]
+[gd_scene load_steps=10 format=3]
 
 [ext_resource type="Texture2D" uid="uid://blal8cdjtu4y3" path="res://scenes/player/player.png" id="1_pqfgn"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_uk46n"]
 [ext_resource type="Script" path="res://scenes/components/health.gd" id="2_p724f"]
-[ext_resource type="PackedScene" uid="uid://boegyv0t6l7xw" path="res://scenes/abilities/swordAbility/controller.tscn" id="2_wj5v0"]
+[ext_resource type="PackedScene" path="res://scenes/abilities/sword/controller.tscn" id="2_wj5v0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ddxxm"]
 bg_color = Color(0.247059, 0.14902, 0.192157, 1)

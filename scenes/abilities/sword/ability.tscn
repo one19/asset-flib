@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bqm3u8emkl2v4"]
+[gd_scene load_steps=8 format=3 uid="uid://cx6bwrkbp5xch"]
 
-[ext_resource type="Texture2D" uid="uid://br62avst1pknk" path="res://scenes/abilities/swordAbility/sword.png" id="1_0nbmd"]
-[ext_resource type="Script" path="res://scenes/abilities/swordAbility/sword_ability.gd" id="1_yg4n5"]
-[ext_resource type="PackedScene" uid="uid://deky1og8svb2k" path="res://scenes/components/hitbox.tscn" id="2_t6nw2"]
+[ext_resource type="Script" path="res://scenes/abilities/sword/ability.gd" id="1_2jscc"]
+[ext_resource type="Texture2D" uid="uid://br62avst1pknk" path="res://scenes/abilities/sword/sword.png" id="2_c80hx"]
+[ext_resource type="PackedScene" uid="uid://deky1og8svb2k" path="res://scenes/components/hitbox.tscn" id="3_gqgws"]
 
 [sub_resource type="Animation" id="Animation_curwo"]
 length = 0.001
@@ -108,7 +108,7 @@ _data = {
 size = Vector2(30, 40)
 
 [node name="swordSwipe" type="Node2D"]
-script = ExtResource("1_yg4n5")
+script = ExtResource("1_2jscc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "swing"
@@ -117,10 +117,10 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_0nbmd")
+texture = ExtResource("2_c80hx")
 offset = Vector2(2.08165e-12, -4)
 
-[node name="Hitbox" parent="." instance=ExtResource("2_t6nw2")]
+[node name="Hitbox" parent="." instance=ExtResource("3_gqgws")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(12.5, 6)

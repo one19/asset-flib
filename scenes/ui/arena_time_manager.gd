@@ -19,7 +19,7 @@ func _ready():
 	timer.timeout.connect(outOfTime)
 
 
-func _process(delta):
+func _process(_delta):
 	var nextTimeTarget = timer.wait_time - ((arenaDifficulty + 1) * DIFFICULTY_INTERVAL)
 	if timer.time_left <= nextTimeTarget:
 		arenaDifficulty += 1

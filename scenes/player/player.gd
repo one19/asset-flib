@@ -42,7 +42,7 @@ func handleContinuousDamage():
 
 	health.takeDamage(1)
 	damageTimer.start()
-	print("health", health.currentHealth)
+	print("health ", health.currentHealth)
 
 
 func onEnemyEntered(_enemyArea: Node2D):

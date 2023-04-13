@@ -39,6 +39,7 @@ func getSpawnPosition():
 
 		if collisionCheck.is_empty():
 			# early exits, no need to worry about no-returns
+			# break and final return also possible, but unnecessary
 			return spawnPosition
 		else:
 			randomDirection = randomDirection.rotated(deg_to_rad(90))
@@ -63,4 +64,3 @@ func onUpdatedDifficulty(difficulty: int):
 
 	# clamp minimum spawn time to 5 a second, prettttty hard stuff
 	spawnTimer.wait_time = max(baseSpawnTime - timeReduction, 0.2)
-	print(spawnTimer.wait_time)
