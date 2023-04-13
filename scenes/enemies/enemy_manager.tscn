@@ -8,4 +8,5 @@ script = ExtResource("1_cbawb")
 spiderScene = ExtResource("2_w7peu")
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true
 autostart = true
