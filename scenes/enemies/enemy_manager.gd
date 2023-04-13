@@ -18,24 +18,42 @@ func _ready():
 	baseSpawnTime = spawnTimer.wait_time
 
 
-func spawnEnemy():
-	spawnTimer.start() # restart the timer on spawn
-
+func getSpawnPosition():
 	var player = get_tree().get_first_node_in_group("player") as Node2D
-	
+
 	if player == null:
 		return
 
-	# Just FYI TAU is 2*pi
+	var spawnPosition = Vector2.ZERO
 	var randomDirection = Vector2.RIGHT.rotated(randf_range(0, TAU))
-	var spawnPosition = randomDirection * spawnRadius + player.global_position
+	
+	# check in all 4 cardinal directions, guaranteed to give us a value
+	for i in 4:
+			# Just FYI TAU is 2*pi
+		spawnPosition = randomDirection * spawnRadius + player.global_position
+
+		# handy dandy bitwise operator to get things like 20, which is 1 << 19
+		# or 524288, which is alot more esoteric
+		var queryParams = PhysicsRayQueryParameters2D.create(player.global_position, spawnPosition, 1 << 0)
+		var collisionCheck = get_tree().root.world_2d.direct_space_state.intersect_ray(queryParams)
+
+		if collisionCheck.is_empty():
+			# early exits, no need to worry about no-returns
+			return spawnPosition
+		else:
+			randomDirection = randomDirection.rotated(deg_to_rad(90))
+
+
+func spawnEnemy():
+	spawnTimer.start() # restart the timer on spawn
 
 	# create the enemy using its instantiate method
 	var enemy = spiderScene.instantiate() as Node2D
 	
 	var entitiesLayer = get_tree().get_first_node_in_group("entitiesLayer")
+
 	entitiesLayer.add_child(enemy)
-	enemy.global_position = spawnPosition
+	enemy.global_position = getSpawnPosition()
 
 
 func onUpdatedDifficulty(difficulty: int):
