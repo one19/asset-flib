@@ -4,9 +4,11 @@ const MAX_SPEED = 200
 const ACCELERATION_SMOOTHING = 15
 
 @onready var damageTimer = $DamageIntervalTimer
+@onready var animationPlayer = $AnimationPlayer
 @onready var healthBar = $HealthBar
-@onready var health = $Health
 @onready var abilities = $Abilities
+@onready var visuals = $Visuals
+@onready var health = $Health
 
 var numberOfCollidingBodies = 0
 
@@ -29,6 +31,15 @@ func _process(delta):
 
 	velocity = velocity.lerp(targetVelocity, 1 - exp(-delta * ACCELERATION_SMOOTHING))
 	move_and_slide()
+	
+	if movementVector.x != 0 || movementVector.y != 0:
+		animationPlayer.play("bounce walk right")
+	else:
+		animationPlayer.stop()
+	
+	var movingLeft = sign(movementVector.x)
+	if movingLeft != 0:
+		visuals.scale = Vector2(movingLeft, 1)
 
 
 func getMovementVector():
