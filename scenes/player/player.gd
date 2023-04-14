@@ -6,6 +6,7 @@ const ACCELERATION_SMOOTHING = 15
 @onready var damageTimer = $DamageIntervalTimer
 @onready var healthBar = $HealthBar
 @onready var health = $Health
+@onready var abilities = $Abilities
 
 var numberOfCollidingBodies = 0
 
@@ -18,7 +19,7 @@ func _ready():
 	healthBar.value = health.getPercent() # this is meh, but children are already ready
 # if they weren't we couldn't instantiate the parent, so there'd be nothing to listen to
 # data only flows after everything is made. This is an acceptable solution for dynamic health
-
+	GameEvents.abilityUpgraded.connect(addAnyNewAbility)
 
 func _process(delta):
 	var movementVector = getMovementVector()
@@ -42,7 +43,14 @@ func handleContinuousDamage():
 
 	health.takeDamage(1)
 	damageTimer.start()
-	print("health ", health.currentHealth)
+
+
+func addAnyNewAbility(abilityUpgraded: AbilityUpgrade, _upgrades: Dictionary):
+	if not abilityUpgraded is Ability:
+		return
+
+	var newAbility = abilityUpgraded as Ability
+	abilities.add_child(newAbility.abilityController.instantiate())
 
 
 func onEnemyEntered(_enemyArea: Node2D):

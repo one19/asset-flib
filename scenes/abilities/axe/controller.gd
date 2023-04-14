@@ -26,5 +26,3 @@ func throwTheAxe():
 	axe.parity = thrownAxes % 2
 
 	thrownAxes += 1
-	print(axe.parity, thrownAxes)
-	
