@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy547xtinpey1"]
+
+[ext_resource type="Texture2D" uid="uid://cp1sh2fov67yn" path="res://scenes/components/splat.png" id="1_gbebt"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bv6d2"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+direction = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+spread = 180.0
+gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+initial_velocity_min = 50.0
+initial_velocity_max = 150.0
+angular_velocity_min = -200.0
+angular_velocity_max = 200.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_max = 5.0
+attractor_interaction_enabled = false
+
+[node name="Splat" type="GPUParticles2D"]
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_bv6d2")
+texture = ExtResource("1_gbebt")
+lifetime = 0.5
+one_shot = true
+interpolate = false
+fract_delta = false
+visibility_rect = Rect2(-500, -500, 1000, 1000)
