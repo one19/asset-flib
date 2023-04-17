@@ -1,12 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://b16707uc5ujrk"]
+[gd_scene load_steps=13 format=3 uid="uid://cxv7fd02lhfhp"]
 
-[ext_resource type="Script" path="res://scenes/enemies/spider/spider.gd" id="1_ernpn"]
-[ext_resource type="PackedScene" uid="uid://dkecm1s4gfhq7" path="res://scenes/components/health.tscn" id="2_7o11o"]
-[ext_resource type="Texture2D" uid="uid://etbsa837cb6a" path="res://scenes/enemies/spider/spider.png" id="2_omdsj"]
-[ext_resource type="PackedScene" path="res://scenes/experience/vial_drop.tscn" id="3_4r4ur"]
-[ext_resource type="PackedScene" uid="uid://dpgwckap8xkf7" path="res://scenes/enemies/velocity.tscn" id="4_1ulyr"]
-[ext_resource type="PackedScene" uid="uid://c5jisfx630adr" path="res://scenes/components/hurtbox.tscn" id="4_cmbp4"]
-[ext_resource type="PackedScene" uid="uid://cl8cf5s2v3xub" path="res://scenes/components/death.tscn" id="4_j1pg3"]
+[ext_resource type="Script" path="res://scenes/enemies/tarantula/tarantula.gd" id="1_3f0nt"]
+[ext_resource type="PackedScene" uid="uid://dkecm1s4gfhq7" path="res://scenes/components/health.tscn" id="2_38el8"]
+[ext_resource type="PackedScene" path="res://scenes/experience/vial_drop.tscn" id="3_q4egn"]
+[ext_resource type="PackedScene" uid="uid://cl8cf5s2v3xub" path="res://scenes/components/death.tscn" id="4_cbrmk"]
+[ext_resource type="PackedScene" uid="uid://dpgwckap8xkf7" path="res://scenes/enemies/velocity.tscn" id="4_l8xnw"]
+[ext_resource type="PackedScene" uid="uid://c5jisfx630adr" path="res://scenes/components/hurtbox.tscn" id="5_f8eru"]
+[ext_resource type="Texture2D" uid="uid://c0rxvdrqt00vk" path="res://scenes/enemies/tarantula/tarantula.png" id="6_ndtvo"]
 
 [sub_resource type="Animation" id="Animation_e6n2b"]
 length = 0.001
@@ -77,12 +77,12 @@ radius = 12.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_tv0j1"]
 radius = 8.0
 
-[node name="Spider" type="CharacterBody2D" groups=["enemies"]]
+[node name="Tarantula" type="CharacterBody2D" groups=["enemies"]]
 position = Vector2(669, 33)
 collision_layer = 8
 collision_mask = 9
 motion_mode = 1
-script = ExtResource("1_ernpn")
+script = ExtResource("1_3f0nt")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "walk down"
@@ -90,21 +90,21 @@ libraries = {
 "": SubResource("AnimationLibrary_g20rs")
 }
 
-[node name="HealthComponent" parent="." instance=ExtResource("2_7o11o")]
-maxHealth = 100.0
+[node name="HealthComponent" parent="." instance=ExtResource("2_38el8")]
+maxHealth = 300.0
 
-[node name="VialDropComponent" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("3_4r4ur")]
+[node name="VialDropComponent" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("3_q4egn")]
 healthComponent = NodePath("../HealthComponent")
 
-[node name="Velocity" parent="." instance=ExtResource("4_1ulyr")]
-maxSpeed = 75
-acceleration = 10.0
+[node name="Velocity" parent="." instance=ExtResource("4_l8xnw")]
+maxSpeed = 200
+acceleration = 0.2
 
-[node name="Death" parent="." node_paths=PackedStringArray("healthComponent", "sprite") instance=ExtResource("4_j1pg3")]
+[node name="Death" parent="." node_paths=PackedStringArray("healthComponent", "sprite") instance=ExtResource("4_cbrmk")]
 healthComponent = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
 
-[node name="Hurtbox" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("4_cmbp4")]
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("5_f8eru")]
 healthComponent = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
@@ -114,7 +114,7 @@ shape = SubResource("CircleShape2D_typcc")
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
-texture = ExtResource("2_omdsj")
+texture = ExtResource("6_ndtvo")
 offset = Vector2(2.08165e-12, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
