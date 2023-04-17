@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://pewx62lm83pu"]
+
+[ext_resource type="Script" path="res://scenes/enemies/spawner.gd" id="1_d4bgy"]
+[ext_resource type="PackedScene" uid="uid://b16707uc5ujrk" path="res://scenes/enemies/spider/spider.tscn" id="2_mkhpm"]
+
+[node name="EnemySpawner" type="Node"]
+script = ExtResource("1_d4bgy")
+spiderScene = ExtResource("2_mkhpm")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true

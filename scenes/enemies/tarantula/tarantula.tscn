@@ -94,6 +94,7 @@ libraries = {
 maxHealth = 300.0
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("3_q4egn")]
+dropPercent = 0.5
 healthComponent = NodePath("../HealthComponent")
 
 [node name="Velocity" parent="." instance=ExtResource("4_l8xnw")]
