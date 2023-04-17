@@ -5,4 +5,4 @@ extends CharacterBody2D
 
 func _process(_delta):
 	movementHandler.accelerateToPlayer()
-	movementHandler.move(self)
+	movementHandler.moveBouncy(self)

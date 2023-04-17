@@ -1,5 +1,6 @@
 extends Node
 
+@export var tarantulaScene: PackedScene
 @export var spiderScene: PackedScene
 @export var arenaTimeManager: Node
 
@@ -8,9 +9,13 @@ extends Node
 var baseSpawnTime = 0
 var spawnRadius = 0
 
+var enemyTable = WeightedTable.new()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	arenaTimeManager.arenaDifficultyUpdated.connect(onUpdatedDifficulty)
+	enemyTable.addItem(spiderScene, 90)
+	enemyTable.addItem(tarantulaScene, 10)
 
 	# set the spawn radius to juuuuust over the diagonal of the viewport
 	spawnRadius = Vector2(get_tree().get_root().get_visible_rect().size).length() / 2 + 15
@@ -48,8 +53,8 @@ func getSpawnPosition():
 func spawnEnemy():
 	spawnTimer.start() # restart the timer on spawn
 
-	# create the enemy using its instantiate method
-	var enemy = spiderScene.instantiate() as Node2D
+	var enemyScene = enemyTable.pickItem()
+	var enemy = enemyScene.instantiate() as Node2D
 	
 	var entitiesLayer = get_tree().get_first_node_in_group("entitiesLayer")
 
@@ -60,7 +65,11 @@ func spawnEnemy():
 func onUpdatedDifficulty(difficulty: int):
 	# we don't restart the timer on change, because it could cause a longer wait
 	# very slow timer growth, nearly a minute for 0.1 second reduction
-	var timeReduction = (0.1 / 12) * difficulty
+	var timeReduction = (0.2 / 12) * difficulty
 
 	# clamp minimum spawn time to 5 a second, prettttty hard stuff
 	spawnTimer.wait_time = max(baseSpawnTime - timeReduction, 0.2)
+
+	if difficulty == 8:
+		enemyTable.updateWeight(tarantulaScene, 90)
+		enemyTable.updateWeight(spiderScene, 10)

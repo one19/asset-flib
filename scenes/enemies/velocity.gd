@@ -28,3 +28,12 @@ func move(characterBody: CharacterBody2D):
 	characterBody.velocity = velocity
 	characterBody.move_and_slide()
 	velocity = characterBody.velocity
+
+
+func moveBouncy(characterBody: CharacterBody2D):
+	characterBody.velocity = velocity
+	var collision = characterBody.move_and_collide(velocity * get_process_delta_time())
+	if collision:
+		characterBody.velocity = velocity.bounce(collision.get_normal())
+
+	velocity = characterBody.velocity

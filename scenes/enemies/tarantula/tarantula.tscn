@@ -75,7 +75,7 @@ _data = {
 radius = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tv0j1"]
-radius = 8.0
+radius = 17.75
 
 [node name="Tarantula" type="CharacterBody2D" groups=["enemies"]]
 position = Vector2(669, 33)
@@ -109,14 +109,16 @@ sprite = NodePath("../Visuals/Sprite2D")
 healthComponent = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(2.08165e-12, -8.5)
+position = Vector2(2.08165e-12, -7)
 shape = SubResource("CircleShape2D_typcc")
+debug_color = Color(0.717647, 0.47451, 0.227451, 0.419608)
 
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("6_ndtvo")
-offset = Vector2(2.08165e-12, -8)
+offset = Vector2(2.08165e-12, -4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.08165e-12, -8)
