@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dj7kgfdjb1dgf"]
+[gd_scene load_steps=14 format=3 uid="uid://dj7kgfdjb1dgf"]
 
 [ext_resource type="Texture2D" uid="uid://blal8cdjtu4y3" path="res://scenes/player/player.png" id="1_pqfgn"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_uk46n"]
 [ext_resource type="Script" path="res://scenes/components/health.gd" id="2_p724f"]
 [ext_resource type="PackedScene" uid="uid://do2aaasr4bw0h" path="res://scenes/abilities/sword/controller.tscn" id="2_wj5v0"]
+[ext_resource type="PackedScene" uid="uid://bdm3gx8crjhwe" path="res://scenes/abilities/teleport/teleport.tscn" id="4_56w4u"]
 
 [sub_resource type="Animation" id="Animation_8gt46"]
 length = 0.001
@@ -126,6 +127,8 @@ script = ExtResource("2_p724f")
 [node name="Abilities" type="Node" parent="."]
 
 [node name="Sword" parent="Abilities" instance=ExtResource("2_wj5v0")]
+
+[node name="teleport" parent="Abilities" instance=ExtResource("4_56w4u")]
 
 [node name="DamageIntervalTimer" type="Timer" parent="."]
 wait_time = 0.5

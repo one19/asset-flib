@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdm3gx8crjhwe"]
+
+[ext_resource type="Script" path="res://scenes/abilities/teleport/teleport.gd" id="1_asuja"]
+
+[node name="teleport" type="Node"]
+script = ExtResource("1_asuja")
