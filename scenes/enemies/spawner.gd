@@ -2,6 +2,7 @@ extends Node
 
 @export var tarantulaScene: PackedScene
 @export var spiderScene: PackedScene
+@export var crabScene: PackedScene
 @export var arenaTimeManager: Node
 
 @onready var spawnTimer = $Timer
@@ -15,7 +16,8 @@ var enemyTable = WeightedTable.new()
 func _ready():
 	arenaTimeManager.arenaDifficultyUpdated.connect(onUpdatedDifficulty)
 	enemyTable.addItem(spiderScene, 90)
-	enemyTable.addItem(tarantulaScene, 10)
+	enemyTable.addItem(tarantulaScene, 5)
+	enemyTable.addItem(crabScene, 5)
 
 	# set the spawn radius to juuuuust over the diagonal of the viewport
 	spawnRadius = Vector2(get_tree().get_root().get_visible_rect().size).length() / 2 + 15
@@ -63,6 +65,7 @@ func spawnEnemy():
 
 
 func onUpdatedDifficulty(difficulty: int):
+	print('difficulty updated', difficulty)
 	# we don't restart the timer on change, because it could cause a longer wait
 	# very slow timer growth, nearly a minute for 0.1 second reduction
 	var timeReduction = (0.2 / 12) * difficulty
@@ -72,4 +75,12 @@ func onUpdatedDifficulty(difficulty: int):
 
 	if difficulty == 8:
 		enemyTable.updateWeight(tarantulaScene, 90)
-		enemyTable.updateWeight(spiderScene, 10)
+		enemyTable.updateWeight(spiderScene, 5)
+		enemyTable.updateWeight(crabScene, 5)
+
+	# THE CRAB WAVE
+	if difficulty >= 16 || difficulty < 24:
+		spawnTimer.wait_time = 0.2
+		enemyTable.updateWeight(crabScene, 90)
+		enemyTable.updateWeight(spiderScene, 5)
+		enemyTable.updateWeight(tarantulaScene, 5)

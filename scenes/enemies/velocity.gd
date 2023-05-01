@@ -1,4 +1,5 @@
 extends Node
+class_name VelocityManager
 
 @export var maxSpeed: int = 40
 @export var acceleration: float = 5
