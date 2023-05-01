@@ -20,9 +20,21 @@ func accelerateToPlayer():
 	accelerateInDirection(direction)
 
 
-func accelerateInDirection(direction: Vector2):
+func accelerateInDirection(direction: Vector2, acc: float = acceleration):
 	var desiredVelocity = direction * maxSpeed
-	velocity = velocity.lerp(desiredVelocity, 1 - exp(-acceleration * get_process_delta_time()))
+	velocity = velocity.lerp(desiredVelocity, 1 - exp(-acc * get_process_delta_time()))
+
+
+func rotateAlongDirection(characterBody: CharacterBody2D):
+	characterBody.rotation = velocity.angle() - (PI / 2)
+
+
+func decelerate():
+	accelerateInDirection(Vector2.ZERO)
+
+
+func leap():
+	accelerateInDirection(velocity.normalized(), 200)
 
 
 func move(characterBody: CharacterBody2D):
@@ -32,9 +44,10 @@ func move(characterBody: CharacterBody2D):
 
 
 func moveBouncy(characterBody: CharacterBody2D):
-	characterBody.velocity = velocity
 	var collision = characterBody.move_and_collide(velocity * get_process_delta_time())
 	if collision:
-		characterBody.velocity = velocity.bounce(collision.get_normal())
+		characterBody.velocity = velocity.bounce(collision.get_normal()) / 2
+	else:
+		characterBody.velocity = velocity
 
 	velocity = characterBody.velocity
