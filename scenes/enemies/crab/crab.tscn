@@ -132,7 +132,7 @@ libraries = {
 }
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_6f0vb")]
-maxHealth = 100.0
+maxHealth = 500.0
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("3_ons1w")]
 healthComponent = NodePath("../HealthComponent")

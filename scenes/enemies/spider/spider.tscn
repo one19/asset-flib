@@ -71,10 +71,9 @@ _data = {
 "walk down": SubResource("Animation_edw7j")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_typcc"]
-radius = 12.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_tv0j1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_typcc"]
 radius = 8.0
 
 [node name="Spider" type="CharacterBody2D" groups=["enemies"]]
@@ -104,12 +103,9 @@ acceleration = 10.0
 healthComponent = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
 
-[node name="Hurtbox" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("4_cmbp4")]
-healthComponent = NodePath("../HealthComponent")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(2.08165e-12, -8.5)
-shape = SubResource("CircleShape2D_typcc")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_tv0j1")
 
 [node name="Visuals" type="Node2D" parent="."]
 
@@ -117,6 +113,10 @@ shape = SubResource("CircleShape2D_typcc")
 texture = ExtResource("2_omdsj")
 offset = Vector2(2.08165e-12, -8)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hurtbox" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("4_cmbp4")]
+healthComponent = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(2.08165e-12, -8)
-shape = SubResource("CircleShape2D_tv0j1")
+shape = SubResource("CircleShape2D_typcc")
+debug_color = Color(0.772549, 0.443137, 0.00392157, 0.419608)
