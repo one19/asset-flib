@@ -16,7 +16,7 @@ var enemyTable = WeightedTable.new()
 func _ready():
 	arenaTimeManager.arenaDifficultyUpdated.connect(onUpdatedDifficulty)
 	enemyTable.addItem(spiderScene, 90)
-	enemyTable.addItem(tarantulaScene, 5)
+	enemyTable.addItem(tarantulaScene, 50)
 	enemyTable.addItem(crabScene, 5)
 
 	# set the spawn radius to juuuuust over the diagonal of the viewport
@@ -79,7 +79,7 @@ func onUpdatedDifficulty(difficulty: int):
 		enemyTable.updateWeight(crabScene, 5)
 
 	# THE CRAB WAVE
-	if difficulty >= 16 || difficulty < 24:
+	if difficulty >= 16 && difficulty < 24:
 		spawnTimer.wait_time = 0.2
 		enemyTable.updateWeight(crabScene, 90)
 		enemyTable.updateWeight(spiderScene, 5)
